@@ -10,7 +10,7 @@ seedTid=sys.argv[4]
 
 from discordWebhooks import Webhook, Attachment, Field
 
-url = "" # Discord API url
+url = "https://discordapp.com/api/webhooks/390099149259014146/uc_ETPrurZB4pQeW9QQcr9I-hdC9YEWf2OwgII07wHVO8ZDWliMmuonVJ62za7Vd2f6o" # Discord API url
 wh = Webhook(url, " ", namn + " - Transmission Nuker")
 
 at = Attachment(author_name = " ", color = "#ADFF2F", title = "[Torrent deleted!]")

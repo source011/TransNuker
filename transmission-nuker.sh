@@ -19,8 +19,8 @@ do
         TORRENTRATIO=$(transmission-remote --torrent "$TORRENTID" --info | grep 'Ratio:' | cut -s -d ':' -f2 | sed -e 's/^[ \t]*//')
         TORRENTSIZE=$(transmission-remote --torrent "$TORRENTID" --info | grep "Total size" | cut -s -d "(" -f2 | cut -s -d "w" -f1)
         TORRENTUPLOADED=$(transmission-remote --torrent "$TORRENTID" --info | grep 'Uploaded:' | cut -s -d ':' -f2 | sed -e 's/^[ \t]*//')
-        LIMITRATIO=150
-        NAMN="Tommy"
+        LIMITRATIO=200
+        NAMN="EnterNameHere"
 
         #HemmaHack Ratio INF-koll
         if [ "$TORRENTRATIO" = "Inf" ] ; then
@@ -45,7 +45,7 @@ do
 
 	INTRATIO=$(echo "$TORRENTRATIO" '*100' | bc -l | awk -F '.' '{ print $1; exit; }')
 
-        #If torrent has been seeded for a week or seeded above a ratio of 1.5, remove it !
+        #If torrent has been seeded for a week or seeded above a ratio of 2.0, remove it !
         if [ "$INTRATIO" -ge "$LIMITRATIO" ]; then
         transmission-remote -t "$TORRENTID" --remove-and-delete
         echo "$NAME" " has been removed! [ SEED RATIO ]"
